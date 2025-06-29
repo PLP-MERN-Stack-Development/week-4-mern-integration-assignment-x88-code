@@ -1,0 +1,21 @@
+{
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^16.6.0",
+		"express": "^5.1.0",
+		"mongoose": "^8.16.1",
+		"multer": "^2.0.1"
+	},
+	"packageManager": "pnpm@10.12.3+sha512.467df2c586056165580ad6dfb54ceaad94c5a30f80893ebdec5a44c5aa73c205ae4a5bb9d5ed6bb84ea7c249ece786642bbb49d06a307df218d03da41c317417",
+	"devDependencies": {
+		"nodemon": "^3.1.10"
+	},
+	"scripts": {
+		"dev": "nodemon server.js"
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"name": "mernWK4-server",
+	"version": "1.0.0"
+}

@@ -1,19 +1,14 @@
 // server.js - Main server file for the MERN blog application
-
-// Import required modules
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const dotenv = require('dotenv');
+require('dotenv').config();
 const path = require('path');
 
 // Import routes
 const postRoutes = require('./routes/posts');
 const categoryRoutes = require('./routes/categories');
 const authRoutes = require('./routes/auth');
-
-// Load environment variables
-dotenv.config();
 
 // Initialize Express app
 const app = express();
@@ -26,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/api/upload', require('./routes/upload'));
 
 // Log requests in development mode
 if (process.env.NODE_ENV === 'development') {
@@ -42,7 +38,7 @@ app.use('/api/auth', authRoutes);
 
 // Root route
 app.get('/', (req, res) => {
-  res.send('MERN Blog API is running');
+  res.send('MERN WK4 API is running');
 });
 
 // Error handling middleware
@@ -56,15 +52,15 @@ app.use((err, req, res, next) => {
 
 // Connect to MongoDB and start server
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log('Connected to MongoDB');
+    console.log('MongoDB connected');
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
   })
   .catch((err) => {
-    console.error('Failed to connect to MongoDB', err);
+    console.error('MongoDB connection error:', err);
     process.exit(1);
   });
 
@@ -75,4 +71,4 @@ process.on('unhandledRejection', (err) => {
   process.exit(1);
 });
 
-module.exports = app; 
+module.exports = app;
