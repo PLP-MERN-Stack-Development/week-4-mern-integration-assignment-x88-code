@@ -75,8 +75,4 @@ week-4-mern-integration-assignment-x88-code/
 
 ![App Screenshot](screenshot.png)
 
-## Author
-
-**Name:** [0xErick] 
-**Course:** Power Learn Project – MERN Stack
 
